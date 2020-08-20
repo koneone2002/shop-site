@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import FormInput from '../formInput/FormInput';
+import CustomButton from '../customButton/CustomButton';
 
 const SignIn = () => {
   const [user, setUser] = useState({
@@ -22,7 +24,7 @@ const SignIn = () => {
       <span>Sign in with your email and password</span>
 
       <form onSubmit={onSubmit}>
-        <input
+        <FormInput
           type='email'
           name='email'
           value={email}
@@ -30,8 +32,8 @@ const SignIn = () => {
           label='email'
           required
         />
-        <label>Email</label>
-        <input
+
+        <FormInput
           type='password'
           name='password'
           value={password}
@@ -39,8 +41,8 @@ const SignIn = () => {
           label='password'
           required
         />
-        <label>Password</label>
-        <input type='submit' value='Submit Form' />
+
+        <CustomButton type='submit'>Sign In</CustomButton>
       </form>
     </div>
   );
