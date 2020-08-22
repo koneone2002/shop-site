@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap');
-
-body {
+* {
   box-sizing: border-box;
+}
+body {
   font-family: 'Open Sans Condensed', sans-serif;
   padding: 20px 60px;
 }
@@ -30,6 +31,7 @@ a {
 
     .option {
       padding: 10px 15px;
+      cursor: pointer;
     }
   }
 }
@@ -162,12 +164,16 @@ $main-color: black;
   color: $main-color;
 }
 .sign-in {
-  width: 30vw;
+  width: 380px;
   display: flex;
   flex-direction: column;
 
   .title {
     margin: 10px 0;
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-between;
   }
 }
 .group {
