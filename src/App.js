@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import Homepage from './pages/homepage/Homepage';
 import ShopPage from './pages/shop/ShopPage';
 import Registration from './pages/register/Registration';
 import Header from './components/header/Header';
 import { auth, createUserProfileDocument } from './firebase/firebaseUtils';
+import { selectCurrentUser } from './redux/user/userSelector';
 import { setCurrentUser } from './redux/user/userActions';
 import './App.scss';
 
@@ -57,8 +59,8 @@ class App extends React.Component {
     );
   }
 }
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 });
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
