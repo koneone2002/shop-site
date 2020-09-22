@@ -6,6 +6,10 @@ export const selectCartItems = createSelector(
   [selectCart],
   cart => cart.cartItems
 );
+export const removeCartItems = createSelector(
+  [selectCart],
+  cart => cart.INITIAL_STATE
+);
 export const selectCartHidden = createSelector(
   [selectCart],
   cart => cart.hidden
