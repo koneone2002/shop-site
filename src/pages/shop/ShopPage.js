@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Spinner from '../../components/spinner/spinner';
 import CollectionsOverview from '../../components/collectionsOverview/CollectionsOverview';
 import Collection from '../../pages/collection/Collection';
 import { updateCollections } from '../../redux/shop/shopActions';
@@ -10,6 +11,7 @@ import {
 } from '../../firebase/firebaseUtils';
 
 class ShopPage extends React.Component {
+  state = { loading: true };
   unsubscribeFromSnapshot = null;
 
   componentDidMount() {
