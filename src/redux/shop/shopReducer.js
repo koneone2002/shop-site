@@ -1,6 +1,6 @@
 import SHOP_DATA from './SHOP_DATA';
 
-import ShopActionTypes from './shopTypes';
+import { ShopActionTypes } from './shopTypes';
 
 const INITIAL_STATE = {
   collections: SHOP_DATA

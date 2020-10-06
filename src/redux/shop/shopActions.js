@@ -1,4 +1,4 @@
-import ShopActionTypes from './shopTypes';
+import { ShopActionTypes } from './shopTypes';
 
 const { UPDATE_COLLECTIONS } = ShopActionTypes;
 export const updateCollections = collectionsMap => ({
