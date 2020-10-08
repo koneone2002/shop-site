@@ -15,7 +15,7 @@ const CollectionPageWithSpinner = WithSpinner(Collection);
 
 class ShopPage extends React.Component {
   state = {
-    loading: true
+    isLoading: true
   };
 
   unsubscribeFromSnapshot = null;
@@ -30,26 +30,26 @@ class ShopPage extends React.Component {
     this.unsubscribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
       const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
       updateCollections(collectionsMap);
-      this.setState({ loading: false });
+      this.setState({ isLoading: false });
     });
   }
 
   render() {
     const { match } = this.props;
-    const { loading } = this.state;
+    const { isLoading } = this.state;
     return (
       <div className='shop-page'>
         <Route
           exact
           path={`${match.path}`}
           render={props => (
-            <CollectionsOverviewWithSpinner isLoading={loading} {...props} />
+            <CollectionsOverviewWithSpinner isLoading={isLoading} {...props} />
           )}
         />
         <Route
           path={`${match.path}/:collectionId`}
           render={props => (
-            <CollectionPageWithSpinner isLoading={loading} {...props} />
+            <CollectionPageWithSpinner isLoading={isLoading} {...props} />
           )}
         />
       </div>
