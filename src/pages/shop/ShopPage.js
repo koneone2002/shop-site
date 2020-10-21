@@ -27,7 +27,15 @@ class ShopPage extends React.Component {
     //   const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
     //   updateCollections(collectionsMap);
     // });
-    this.unsubscribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
+
+    // Using Observable + Observer Pattern
+    // this.unsubscribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
+    //   const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
+    //   updateCollections(collectionsMap);
+    //   this.setState({ isLoading: false });
+    // });
+
+    collectionRef.get().then(snapshot => {
       const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
       updateCollections(collectionsMap);
       this.setState({ isLoading: false });
