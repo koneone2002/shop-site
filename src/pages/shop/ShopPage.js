@@ -7,7 +7,7 @@ import {
   selectIsCollectionsLoaded
 } from '../../redux/shop/shopSelector';
 import WithSpinner from '../../components/spinner/withSpinner';
-import CollectionsOverview from '../../components/collectionsOverview/CollectionsOverview';
+import CollectionsOverviewContainer from '../../components/collectionsOverview/collectionsOverviewContainer';
 import Collection from '../../pages/collection/Collection';
 import {
   // updateCollections,
@@ -18,7 +18,6 @@ import {
   convertCollectionsSnapshotToMap
 } from '../../firebase/firebaseUtils';
 
-const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
 const CollectionPageWithSpinner = WithSpinner(Collection);
 
 class ShopPage extends React.Component {
@@ -54,19 +53,14 @@ class ShopPage extends React.Component {
     fetchCollectionsStartAsync();
   }
   render() {
-    const { match, isCollectionFetching, isCollectionLoaded } = this.props;
+    const { match, isCollectionLoaded } = this.props;
 
     return (
       <div className='shop-page'>
         <Route
           exact
           path={`${match.path}`}
-          render={props => (
-            <CollectionsOverviewWithSpinner
-              isLoading={isCollectionFetching}
-              {...props}
-            />
-          )}
+          component={CollectionsOverviewContainer}
         />
         <Route
           path={`${match.path}/:collectionId`}
@@ -84,7 +78,6 @@ class ShopPage extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  isCollectionFetching: selectIsCollectionFetching,
   isCollectionLoaded: selectIsCollectionsLoaded
 });
 
