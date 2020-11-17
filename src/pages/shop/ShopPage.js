@@ -12,7 +12,7 @@ import CollectionContainer from '../../pages/collection/CollectionContainer';
 
 import {
   // updateCollections,
-  fetchCollectionsStartAsync
+  fetchCollectionsStart
 } from '../../redux/shop/shopActions';
 import {
   firestore,
@@ -48,8 +48,8 @@ class ShopPage extends React.Component {
   //   });
   // }
   componentDidMount() {
-    const { fetchCollectionsStartAsync } = this.props;
-    fetchCollectionsStartAsync();
+    const { fetchCollectionsStart } = this.props;
+    fetchCollectionsStart();
   }
   render() {
     const { match } = this.props;
@@ -72,7 +72,7 @@ class ShopPage extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchCollectionsStartAsync: () => dispatch(fetchCollectionsStartAsync())
+  fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
 });
 export default connect(
   null,
